@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  get 'lists/new'
-    post "lists" => "lists#create" #データを追加するための
+  # HTTPメソッド 'URL' => 'コントローラ#アクション'
+  get 'lists/new' #データを取得するためのHTTPメソッド
+    post "lists" => "lists#create" #データを新規保存するためのHTTPメソッド
+    
   get 'lists/index'
   get 'lists/show'
   get 'lists/edit'
