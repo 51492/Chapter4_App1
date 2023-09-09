@@ -16,10 +16,11 @@ class ListsController < ApplicationController
     # ↓データをデータベースに保存するためのsaveメソッドを実行
     list.save
     # ↓トップ画面へリダイレクトする
-    redirect_to "/top"
+    redirect_to list_path(list.id)
   end
 
   def show
+    @list = List.find(params[:id]) # findメソッドは引数(:id)とidカラムを照合してレコードを取得するメソッド
   end
 
   def edit
@@ -33,6 +34,7 @@ class ListsController < ApplicationController
     # require:送られてきたデータの中からモデル名(ここでは:list)を指定し、データを絞り込む
     # permit:requireで絞り込んだデータの中から、保存を許可するカラムを指定する。
   end
+
 
 end
 
