@@ -5,6 +5,9 @@ class ListsController < ApplicationController
   end
 
   def index
+    @lists = List.all
+    # viewファイルで呼び出せるように@(インスタンス変数)を使用してインスタンス化
+    # allメソッドはそのモデルがやり取りしているDBのテーブルに保存されている全てのデータを取得する
   end
 
   def create
