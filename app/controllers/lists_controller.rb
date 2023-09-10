@@ -11,7 +11,7 @@ class ListsController < ApplicationController
   end
 
   def create
-    # ↓フォームに記述された文字やデータを受け取り新規登録するためにインスタンス化
+    # ↓フォームに記述された文字やデータを受け取り新規登録するためにローカル変数化
     list = List.new(list_params)
     # ↓データをデータベースに保存するためのsaveメソッドを実行
     list.save
@@ -24,6 +24,7 @@ class ListsController < ApplicationController
   end
 
   def edit
+    @list = List.find(params[:id])
   end
 
   private
