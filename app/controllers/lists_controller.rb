@@ -13,16 +13,14 @@ class ListsController < ApplicationController
   def create
     # ↓フォームに記述された文字やデータを受け取り新規登録するためにインスタンス化
     @list = List.new(list_params)
-    
+
     # ↓データをデータベースに保存するためのsaveメソッドを実行
     if @list.save
       redirect_to list_path(@list.id)
     else
       render :new #render：アクション名で、同じコントローラ内の別アクションのViewを表示する
     end
-    
-    # ↓トップ画面へリダイレクトする
-    redirect_to list_path(list.id)
+
   end
 
   def show
@@ -32,19 +30,19 @@ class ListsController < ApplicationController
   def edit
     @list = List.find(params[:id])
   end
-  
+
   def update
     list = List.find(params[:id])
     list.update(list_params) # updateメソッドはすでにテーブルに保存されているデータを、新しい情報に更新するメソッド
     redirect_to list_path(list.id)
   end
-  
+
   def destroy
     list = List.find(params[:id]) #データ(レコード)を1件取得
     list.destroy #データ(レコード) を削除
     redirect_to "/lists" #投稿一覧画面へリダイレクト
   end
-  
+
   private
   # ストロングパラメータ
   def list_params
