@@ -11,10 +11,16 @@ class ListsController < ApplicationController
   end
 
   def create
-    # ↓フォームに記述された文字やデータを受け取り新規登録するためにローカル変数化
-    list = List.new(list_params)
+    # ↓フォームに記述された文字やデータを受け取り新規登録するためにインスタンス化
+    @list = List.new(list_params)
+    
     # ↓データをデータベースに保存するためのsaveメソッドを実行
-    list.save
+    if @list.save
+      redirect_to list_path(@list.id)
+    else
+      render :new #render：アクション名で、同じコントローラ内の別アクションのViewを表示する
+    end
+    
     # ↓トップ画面へリダイレクトする
     redirect_to list_path(list.id)
   end
