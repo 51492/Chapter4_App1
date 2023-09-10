@@ -26,7 +26,13 @@ class ListsController < ApplicationController
   def edit
     @list = List.find(params[:id])
   end
-
+  
+  def update
+    list = List.find(params[:id])
+    list.update(list_params) # updateメソッドはすでにテーブルに保存されているデータを、新しい情報に更新するメソッド
+    redirect_to list_path(list.id)
+  end
+  
   private
   # ストロングパラメータ
   def list_params
