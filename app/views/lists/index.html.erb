@@ -15,15 +15,6 @@
   <!--＜%= link_to 表示させるテキスト , "リンク先URL" [,オプション] %＞-->
 
   <p>画像</p>
-  <% if list.image.attached? %>
-  <!--attached?は画像が存在すればtrue、無ければfalseを返す-->
-    <%= image_tag list.image, size: "200x200" %>
-    <!--listに紐づいているimageをimage_tagに渡して画像を表示する-->
-    <!--オプションとしてsizeを指定すると画像サイズの変更ができる-->
-
-  <% else %>
-    <%= image_tag "no_image", size: "200x200" %>
-
-  <% end %>
+  <%= image_tag list.image, size: "200x200" %>
 
 <% end %>
