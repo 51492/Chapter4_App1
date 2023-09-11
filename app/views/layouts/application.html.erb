@@ -29,9 +29,11 @@
     </nav>
 
     <main>
-      <div>
-        <%= flash[:notice] %>
-      </div>
+      <% flash.each do |message_type, message| %>
+        <div class="flash-message <%= message_type %>"><%= message %></div>
+        <!--flashは、eachメソッドを実行するとキーと対応する値を取り出す-->
+        <!--上記は、キーをmessage_type変数に、値をmessage変数に格納する-->
+      <% end %>
 
       <%= yield %>
     </main>

@@ -21,7 +21,7 @@ class ListsController < ApplicationController
       redirect_to list_path(@list.id)
     else
       #flash.nowでフラッシュメッセージを定義
-      flash.now[:notice] = "投稿に失敗しました。"
+      flash.now[:alert] = "投稿に失敗しました。"
       render :new #render：アクション名で、同じコントローラ内の別アクションのViewを表示する
     end
 
